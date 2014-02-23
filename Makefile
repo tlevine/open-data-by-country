@@ -6,12 +6,12 @@ data/open-data-index.csv:
 
 data/cpi.csv:
 	mkdir -p data
-	wget -O data/cpi.csv 'https://github.com/datasets/cpi/blob/master/data/cpi.csv'
+	wget -O data/cpi.csv 'https://github.com/datasets/cpi/raw/master/data/cpi.csv'
 
 data/population.csv:
 	mkdir -p data
-	wget -O data/population.csv 'https://github.com/datasets/population/blob/master/data/population.csv'
+	wget -O data/population.csv 'https://github.com/datasets/population/raw/master/data/population.csv'
 
 data/gdp.csv:
 	mkdir -p data
-	wget -O data/gdp.csv 'https://github.com/datasets/gdp/blob/master/data/gdp.csv'
+	wget -O data/gdp.csv 'https://github.com/datasets/gdp/raw/master/data/gdp.csv'
