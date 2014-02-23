@@ -33,10 +33,17 @@ p1 <- ggplot(e) + aes(x = Year, y = value, color = stat, size = n.datasets, grou
   scale_y_log10('') +
   ggtitle('Open Data Index results compared to typical country statistics')
 
-p2 <- ggplot(subset(e, Year == 2012 & stat == 'cpi')) +
+p.cpi <- ggplot(subset(e, Year == 2012 & stat == 'cpi')) +
   aes(x = value, y = n.datasets, label = Country.Name) +
   xlab('CPI') + ylab('Number of ODI datasets') +
   geom_text() +
   ggtitle('CPI doesn\'t seem to say much about the number of available important datasets')
 
-ggsave('plot.png', p2)
+
+p.gdp <- ggplot(subset(e, Year == 2010 & stat == 'gdp')) +
+  aes(x = value, y = n.datasets, label = Country.Name) +
+  xlab('CPI') + ylab('Number of ODI datasets') +
+  geom_text() +
+  ggtitle('CPI doesn\'t seem to say much about the number of available important datasets')
+
+ggsave('plot.png', p.gdp)
