@@ -28,7 +28,15 @@ while ('Country.Code' %in% names(d)) {
 }
 e <- melt(d, id.vars = c('Country.Name','Year','n.datasets'), value.name = 'value', variable.name = 'stat')
 
-p <- ggplot(e) + aes(x = Year, y = value, color = stat, size = n.datasets, group = Country.Name) +
-  geom_line() + facet_wrap(~stat) +
+p1 <- ggplot(e) + aes(x = Year, y = value, color = stat, size = n.datasets, group = Country.Name) +
+  geom_line() + facet_wrap(~stat, scales="free_y", ncol = 1) +
+  scale_y_log10('') +
   ggtitle('Open Data Index results compared to typical country statistics')
-ggsave('plot.png', p)
+
+p2 <- ggplot(subset(e, Year == 2012 & stat == 'cpi')) +
+  aes(x = value, y = n.datasets, label = Country.Name) +
+  xlab('CPI') + ylab('Number of ODI datasets') +
+  geom_text() +
+  ggtitle('CPI doesn\'t seem to say much about the number of available important datasets')
+
+ggsave('plot.png', p2)
